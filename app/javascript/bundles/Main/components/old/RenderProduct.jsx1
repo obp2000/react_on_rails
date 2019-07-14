@@ -1,0 +1,71 @@
+import PropTypes from 'prop-types'
+import React from 'react'
+import {Link} from 'react-router-dom'
+
+const Product = ({
+    id,
+    name,
+    price,
+    weight,
+    width,
+    density,
+    dollar_price,
+    dollar_rate,
+    created_at,
+    updated_at,
+    handleDelete
+}) => {
+    return <tr>
+        <th scope="row">{id}</th>
+        <td>{name}</td>
+        <td>{price}</td>
+        <td>{width}</td>
+        <td>{density}</td>
+        <td>{created_at}</td>
+        <td>{updated_at}</td>
+        <td>
+            <Link to={'/products/' + id} className="btn btn-outline-primary btn-sm">Редактировать</Link>
+        </td>
+        <td>
+            <button className="btn btn-outline-primary btn-sm" onClick={handleDelete.bind(this.id)}>Удалить</button>
+        </td>
+    </tr>
+}
+
+const {number, string} = PropTypes
+
+Product.propTypes = {
+    id: number,
+    name: string.isRequired,
+    image_url: string,
+    density: number,
+    density_shop: number,
+    width: number,
+    width_shop: number,
+    price: number.isRequired,
+    price_pre: number,
+    dollar_price: number,
+    dollar_rate: number,
+    weight_for_count: number,
+    length_for_count: number,
+    weight: number
+}
+
+Product.defaultProps = {
+    id: 0,
+    name: '',
+    image_url: '',
+    density: 0,
+    density_shop: 0,
+    width: 0,
+    width_shop: 0,
+    price: 0,
+    price_pre: 0,
+    dollar_price: 0,
+    dollar_rate: 0,
+    weight_for_count: 0,
+    length_for_count: 0,
+    weight: 0
+}
+
+export default Product

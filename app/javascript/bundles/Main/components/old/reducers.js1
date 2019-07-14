@@ -1,0 +1,67 @@
+import {
+  REQUEST_CUSTOMERS,
+  RECEIVE_CUSTOMERS,
+  REQUEST_CUSTOMER,
+  RECEIVE_CUSTOMER,
+  REQUEST_UPDATE_CUSTOMER,
+  RECEIVE_UPDATE_CUSTOMER,
+  REQUEST_DELETE_CUSTOMER,
+  RECEIVE_DELETE_CUSTOMER
+} from './actions'
+
+function customers(state = {customers: [], 
+                            totalCount: 0, 
+                            isFetching: false,
+                            loaded: false, 
+                            customer: null}, action) {
+  switch (action.type) {
+    case REQUEST_CUSTOMERS:
+      return Object.assign({}, state, {
+        customers: [],
+        totalCount: 0,
+        isFetching: true,
+        didInvalidate: false
+      })
+    case RECEIVE_CUSTOMERS:
+      return Object.assign({}, state, {
+        customers: action.customers,
+        totalCount: action.totalCount,
+        isFetching: false,
+        loaded: true
+      })
+    case REQUEST_CUSTOMER:
+      return Object.assign({}, state, {
+        customer: null,
+        isFetching: true
+      })
+    case RECEIVE_CUSTOMER:
+      return Object.assign({}, state, {
+        customer: action.customer,
+        isFetching: false
+      })
+    case REQUEST_DELETE_CUSTOMER:
+      return Object.assign({}, state, {
+        isFetching: true
+      }) 
+    case RECEIVE_DELETE_CUSTOMER:
+      return Object.assign({}, state, {
+        customers: state.customers.filter(customer => {return (customer.id != action.customer_id)}),
+        totalCount: state.totalCount - 1,
+        isFetching: false
+      })
+    case REQUEST_UPDATE_CUSTOMER:
+      return Object.assign({}, state, {
+        isFetching: true
+      }) 
+    case RECEIVE_UPDATE_CUSTOMER:
+      return Object.assign({}, state, {
+        customer: action.json,
+        customers: [...state.customers.filter(customer => {return (customer.id != action.customer_id)}), action.json],
+        isFetching: false
+      })      
+    default:
+      return state
+  }
+}
+
+export default customers

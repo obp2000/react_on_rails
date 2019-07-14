@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customers 1`] = `
+<div>
+  <h3>
+    Покупатели (
+    )
+  </h3>
+  <table
+    className="table table-sm table-striped table-bordered table-hover"
+  >
+    <thead
+      className="thead-light"
+    >
+      <tr>
+        <th
+          scope="col"
+        >
+          Id
+        </th>
+        <th
+          scope="col"
+        >
+          Ник
+        </th>
+        <th
+          scope="col"
+        >
+          ФИО
+        </th>
+        <th
+          scope="col"
+        >
+          Создан
+        </th>
+        <th
+          scope="col"
+        >
+          Обновлен
+        </th>
+        <th
+          scope="col"
+        >
+          <a
+            className="btn btn-outline-primary btn-sm"
+            href="#/customers/new"
+            onClick={[Function]}
+          >
+            Новый
+          </a>
+        </th>
+        <th
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;
